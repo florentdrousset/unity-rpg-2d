@@ -7,10 +7,13 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     private Rigidbody2D myRigidbody;
     private Vector3 change;
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,11 +26,23 @@ public class PlayerMovement : MonoBehaviour
         //change.y = Input.GetAxis("Vertical");
         change.y = Input.GetAxisRaw("Vertical");
         //Debug ! Très utile.
-       // Debug.Log(change);
+        // Debug.Log(change);
 
-        if(change != Vector3.zero)
+        UpdateAnimationAndMove();
+    }
+
+    void UpdateAnimationAndMove()
+    {
+        if (change != Vector3.zero)
         {
             MoveCharacter();
+            animator.SetFloat("moveX", change.x);
+            animator.SetFloat("moveY", change.y);
+            animator.SetBool("moving", true);
+        }
+        else
+        {
+            animator.SetBool("moving", false);
         }
     }
 
