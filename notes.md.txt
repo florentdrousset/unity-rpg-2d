@@ -1,0 +1,3 @@
+# Notes
+
+To correct lines between tiles : Enabling "Pixel Snap" on the tilemap material AND changing the tileset's filter mode to "Point (no filter)" fixed the problem for me.

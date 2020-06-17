@@ -27,6 +27,10 @@ public class CameraMovement : MonoBehaviour
             targetPosition.x = Mathf.Clamp(targetPosition.x, minPosition.x, maxPosition.x);
             targetPosition.y = Mathf.Clamp(targetPosition.y, minPosition.y, maxPosition.y);
 
+            //Lerp = Linear Interpolation. finds the distance between it and the target, and moves to that position at a certain rate
+            // 1st argument : position you're currently at
+            // 2nd argument : position we want to go to
+            // 3rd argument : the amount we want to cover
             transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing);
         } 
     }
